@@ -17,7 +17,9 @@
           </td>
           <td><%= link_to @book.title, @book %></td>
           <td><%= @book.body %></td>
-          <td><% if @book.favorited_by?(current_user) %>
+          <td>
+          <% unless @user == current_user %>
+            <% if @book.favorited_by?(current_user) %>
             <p>
               <%= link_to book_favorites_path(@book), method: :delete do %>
                 ♥<%= @book.favorites.count %>
@@ -30,6 +32,7 @@
               <% end %>
             </p>
             <% end %>
+          <% end %>
           </td>
           <td>
             <p>コメント件数：<%= @book.book_comments.count %></p>
@@ -61,10 +64,12 @@
         </tbody>
       </table>
       <div class="form-group">
+      <% unless @user == current_user %>
         <%= form_with model: [@book, @book_comment] do |f| %>
           <%= f.text_area :comment, rows: '5', class: 'form-control' %>
           <%= f.submit "送信する" %>
         <% end %>
+      <% end %>
       </div>
     </div>
   </div>
