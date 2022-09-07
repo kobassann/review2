@@ -7,7 +7,7 @@ class SearchesController < ApplicationController
     if @range == '1'
       @user = User.search(search,word)
     else
-    　@book = Book.search(search,word)
+      @book = Book.search(search,word)
     end
     
   end

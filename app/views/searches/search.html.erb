@@ -1,7 +1,7 @@
-<h2>Results index</h2>
-
+<%= render 'searches' %>
 <table class="table table-hover table-inverse">
 　<% if @range == '2' %>
+　<h2>books searches</h2>
   <thead>
     <tr>
      <th></th>
@@ -13,7 +13,7 @@
 
 
   <tbody>
-     <% @book.each do |book| %>
+    <% @book.each do |book| %>
      <tr>
         <td><%= link_to user_path(book.user.id) do %>
           <%= image_tag book.user.get_profile_image, size: "50x50" %>
@@ -37,10 +37,11 @@
         </td>
         <td><%= "コメント数：#{book.book_comments.count} " %></td>
       </tr>
-     <% end %>
+    <% end %>
   </tbody>
 
   <% else %>
+  <h2>users searches</h2>
   <thead>
      <tr>
       <th>image</th>
