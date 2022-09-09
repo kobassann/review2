@@ -1,0 +1,4 @@
+$("#comments").html("<%= j(render 'book_comments/comment', book: @book) %>")
+<!--comments（id）という部分的に更新したいHTMLファイルをjsファイルに変換する-->
+$("#book_comment_comment").val('')
+<!--送信後、コメントのフォームの中を空にする-->
